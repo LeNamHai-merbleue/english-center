@@ -48,7 +48,7 @@ public class User {
     private List<UserCenterProfile> profiles = new ArrayList<>();
 
     /**
-     * LUỒNG 1: XIN GIẢNG DẠY (Dành cho Staff/Teacher)
+     * LUỒNG 1: XIN GIẢNG DẠY (Dành cho Staff)
      * Lưu danh sách các lớp mà User này đã nhấn nút "Ứng tuyển" (Apply to teach).
      * Admin sẽ duyệt danh sách này để đưa vào ClassStaff chính thức.
      */

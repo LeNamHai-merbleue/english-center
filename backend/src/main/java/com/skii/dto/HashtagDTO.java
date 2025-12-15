@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HashtagDTO {
-    private String id;      // "role-teacher", "trait-ielts"...
-    private String name;    // "Giáo viên", "IELTS"...
-    private String type;    // "ROLE", "TRAIT"
+    private String id;     
+    private String name;  
+    private String type;   
     private boolean isSystem; 
 }

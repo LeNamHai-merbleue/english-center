@@ -19,7 +19,7 @@ public class StaffController {
     private final StaffService staffService;
 
     /**
-     * 1. DANH SÁCH NHÂN VIÊN (Dữ liệu từ UserCenterProfile)
+     * 1. DANH SÁCH NHÂN VIÊN
      */
     @GetMapping("/list")
     public ResponseEntity<List<StaffResponseDTO>> getStaffList(
@@ -30,7 +30,7 @@ public class StaffController {
     }
 
     /**
-     * 2. DANH SÁCH ỨNG VIÊN (Dữ liệu từ JoinRequest)
+     * 2. DANH SÁCH ỨNG VIÊN
      */
     @GetMapping("/candidates")
     public ResponseEntity<List<StaffResponseDTO>> getCandidateList(
@@ -40,7 +40,6 @@ public class StaffController {
 
     /**
      * 3. CHI TIẾT ĐƠN ỨNG TUYỂN
-     * Đổi PathVariable thành requestId để khớp với JoinRequest ID
      */
     @GetMapping("/candidates/{requestId}")
     public ResponseEntity<CandidateDetailResponseDTO> getCandidateDetail(
@@ -80,9 +79,7 @@ public class StaffController {
         return ResponseEntity.noContent().build();
     }
 
-    // ==========================================================
-    // CÁC ENDPOINT DƯỚI ĐÂY LÀM VIỆC VỚI NHÂN VIÊN (PROFILES)
-    // ==========================================================
+    // CÁC ENDPOINT LÀM VIỆC VỚI NHÂN VIÊN 
 
     @GetMapping("/{profileId}/detail")
     public ResponseEntity<StaffResponseDTO> getStaffDetail(

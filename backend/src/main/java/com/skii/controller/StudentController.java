@@ -19,7 +19,7 @@ public class StudentController {
     private final StudentService studentService;
 
     /**
-     * 1. DANH SÁCH HỌC VIÊN CHÍNH THỨC (Dữ liệu từ UserCenterProfile)
+     * 1. DANH SÁCH HỌC VIÊN CHÍNH THỨC
      */
     @GetMapping("/list")
     public ResponseEntity<List<StudentResponseDTO>> getStudentList(
@@ -30,7 +30,7 @@ public class StudentController {
     }
 
     /**
-     * 2. DANH SÁCH HỌC VIÊN MỚI ĐĂNG KÝ (Dữ liệu từ JoinRequest)
+     * 2. DANH SÁCH HỌC VIÊN MỚI ĐĂNG KÝ
      */
     @GetMapping("/candidates")
     public ResponseEntity<List<StudentResponseDTO>> getCandidateList(
@@ -79,9 +79,7 @@ public class StudentController {
         return ResponseEntity.noContent().build();
     }
 
-    // ==========================================================
-    // CÁC ENDPOINT DƯỚI ĐÂY LÀM VIỆC VỚI HỒ SƠ HỌC VIÊN (PROFILES)
-    // ==========================================================
+    // CÁC ENDPOINT LÀM VIỆC VỚI HỒ SƠ HỌC VIÊN 
 
     @GetMapping("/{profileId}/detail")
     public ResponseEntity<StudentResponseDTO> getStudentDetail(
@@ -91,7 +89,7 @@ public class StudentController {
     }
 
     /**
-     * Cập nhật thông tin học viên (Lớp, trình độ, note...)
+     * Cập nhật thông tin học viên
      */
     @PatchMapping("/{profileId}/update")
     public ResponseEntity<?> updateStudent(

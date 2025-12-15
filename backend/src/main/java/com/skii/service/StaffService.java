@@ -24,9 +24,7 @@ public class StaffService {
     private final HashtagRepository hashtagRepository;
     private final StaffMapper staffMapper;
 
-    // =========================================================================
-    // PHẦN 1: QUẢN LÝ ỨNG VIÊN (JOIN REQUESTS)
-    // =========================================================================
+    // 1: QUẢN LÝ ỨNG VIÊN 
 
     @Transactional(readOnly = true)
     public List<StaffResponseDTO> getPendingCandidates(Long centerId) {
@@ -102,13 +100,8 @@ public class StaffService {
     }
 
 
-    // =========================================================================
-    // PHẦN 2: QUẢN LÝ NHÂN VIÊN CHÍNH THỨC (PROFILES)
-    // =========================================================================
+    // 2: QUẢN LÝ NHÂN VIÊN CHÍNH THỨC 
 
-    /**
-     * CẬP NHẬT: Truyền thêm studentTagId để Repository loại trừ học sinh
-     */
     @Transactional(readOnly = true)
     public List<StaffResponseDTO> getStaffList(Long centerId, String search, List<String> hashtagIds) {
         String studentTagId = "STUDENT_" + centerId;
@@ -118,7 +111,7 @@ public class StaffService {
     }
 
     /**
-     * MỚI: Lấy tổng số lượng nhân sự (phục vụ thống kê/dashboard)
+     * Lấy tổng số lượng nhân sự (phục vụ thống kê/dashboard)
      */
     @Transactional(readOnly = true)
     public long getTotalStaffCount(Long centerId) {
@@ -160,9 +153,7 @@ public class StaffService {
     }
 
 
-    // =========================================================================
-    // PHẦN 3: HÀM BỔ TRỢ (HELPER METHODS)
-    // =========================================================================
+    // 3: HÀM BỔ TRỢ
 
     private UserCenterProfile findAndValidateProfile(Long profileId, Long centerId) {
         UserCenterProfile profile = profileRepository.findById(profileId)

@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 public class RoadmapTuition extends Tuition {
-    private Integer installmentNumber; // Đợt thứ mấy (ví dụ: 1, 2, 3)
-    private Integer totalInstallments;  // Tổng số đợt (ví dụ: 3)
-    private String roadmapPhase;        // Tên giai đoạn (ví dụ: "Giai đoạn khởi động")
+    private Integer installmentNumber; // Đợt thứ mấy 
+    private Integer totalInstallments;  // Tổng số đợt 
+    private String roadmapPhase;        // Tên giai đoạn 
 }

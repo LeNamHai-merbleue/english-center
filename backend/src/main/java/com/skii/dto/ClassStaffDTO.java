@@ -13,21 +13,21 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClassStaffDTO {
-    private Long id; // ID của bản ghi trung gian này
+    private Long id;
     
-    // --- Thông tin Nhân sự (Lấy từ User) ---
-    private Long staffId;       // user_id
-    private String staffName;    // Tên đầy đủ của GV/Trợ giảng
-    private String staffEmail;   // Email để liên lạc
-    private String staffPhone;   // Số điện thoại
+    // --- Thông tin Nhân sự  ---
+    private Long staffId;       
+    private String staffName;   
+    private String staffEmail;   
+    private String staffPhone;  
     
     // --- Thông tin trong lớp học ---
-    private StaffClassRole role;        // MAIN_TEACHER hoặc ASSISTANT
+    private StaffClassRole role;        
     private AssignmentStatus status;    // ACTIVE, PENDING_CONFIRM, TERMINATED
-    private LocalDate assignedDate;     // Ngày nhận lớp
+    private LocalDate assignedDate;    
     private Double hourlyRate;          // Lương/giờ thỏa thuận cho lớp này
 
-    // --- Thông tin Lớp (Nếu cần trả về trong danh sách công việc của Staff) ---
+    // --- Thông tin Lớp ---
     private Long classId;
     private String className;
 }

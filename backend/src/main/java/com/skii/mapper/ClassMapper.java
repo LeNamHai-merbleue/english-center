@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class ClassMapper {
 
     /**
-     * Map Entity Class sang DTO đầy đủ thông tin chi tiết cho Modal
+     * Map Entity Class sang DTO 
      */
     public ClassDTO toDTO(Class entity) {
         if (entity == null) return null;
@@ -50,7 +50,6 @@ public class ClassMapper {
     }
 
     /**
-     * Chuyển đổi List<User> sang List<UserDTO>
      * Lấy thông tin Experience, Rating, Hashtags từ UserCenterProfile của trung tâm hiện tại
      */
     private List<UserDTO> mapUsersToDTOList(List<User> users, Long centerId) {
@@ -69,10 +68,9 @@ public class ClassMapper {
                     .experience(profile != null ? profile.getExperience() : "Mới")
                     .rating(profile != null ? profile.getRating() : 5.0)
                     
-                    // SỬA LỖI: Chuyển Set<Hashtag> sang List<String>
                     .hashtags(profile != null && profile.getHashtags() != null 
                         ? profile.getHashtags().stream()
-                            .map(Hashtag::getName) // Giả sử Entity Hashtag có method getName()
+                            .map(Hashtag::getName) 
                             .collect(Collectors.toList())
                         : new ArrayList<>())
                     

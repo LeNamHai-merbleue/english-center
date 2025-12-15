@@ -12,11 +12,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClassStudentDTO {
-    private Long id; // ID của bản ghi trung gian
-
-    // --- Thông tin Học sinh (Lấy từ User) ---
-    private Long studentId;      // user_id
-    private String studentName;   // Tên học sinh
+    private Long id; 
+    // --- Thông tin Học sinh  ---
+    private Long studentId;      
+    private String studentName;   
     private String studentEmail;
     private String studentPhone;
 
@@ -29,7 +28,7 @@ public class ClassStudentDTO {
     private Double finalScore;
     private String teacherRemark;
 
-    // --- Thông tin lớp (Nếu cần dùng cho Profile học sinh) ---
+    // --- Thông tin lớp ---
     private Long classId;
     private String className;
 }

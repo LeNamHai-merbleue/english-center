@@ -11,6 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GroupedHashtagResponseDTO {
-    private List<HashtagDTO> roles;  // Chứa hashtag type="ROLE"
-    private List<HashtagDTO> traits; // Chứa hashtag type="TRAIT"
+    private List<HashtagDTO> roles;  
+    private List<HashtagDTO> traits; 
 }

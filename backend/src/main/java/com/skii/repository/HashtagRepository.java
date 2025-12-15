@@ -15,7 +15,6 @@ public interface HashtagRepository extends JpaRepository<Hashtag, String> {
 
     /**
      * 1. LẤY DANH SÁCH HASHTAG
-     * Phục vụ hiển thị: Lấy nhãn của trung tâm cụ thể hoặc nhãn dùng chung hệ thống (center_id IS NULL)
      */
     @Query("SELECT h FROM Hashtag h WHERE h.center.id = :centerId OR h.center IS NULL")
     List<Hashtag> findByCenterIdOrSystem(@Param("centerId") Long centerId);
@@ -35,10 +34,8 @@ public interface HashtagRepository extends JpaRepository<Hashtag, String> {
 
     /**
      * 4. TÌM NHÃN STUDENT CỤ THỂ
-     * Hỗ trợ logic tự động gán nhãn cho học viên khi đăng ký học
      */
     @Query("SELECT h FROM Hashtag h WHERE h.id = :id AND h.center.id = :centerId")
     Optional<Hashtag> findByIdAndCenterId(@Param("id") String id, @Param("centerId") Long centerId);
 
-    // Mặc định JpaRepository đã có save(), existsById(), deleteById()
 }

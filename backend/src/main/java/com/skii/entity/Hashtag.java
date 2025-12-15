@@ -3,13 +3,13 @@ package com.skii.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor; // Thêm cái này
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 @Builder
 @Entity
-@NoArgsConstructor  // Để Hibernate tạo được Object
-@AllArgsConstructor // BẮT BUỘC: Để @Builder hoạt động
+@NoArgsConstructor 
+@AllArgsConstructor
 @Table(name = "hashtags")
 @Data
 public class Hashtag {

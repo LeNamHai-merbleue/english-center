@@ -20,7 +20,7 @@ public class ClassDTO {
     private String name;
     private String level;
     
-    // --- Phân loại & Trạng thái (Logic Backbone) ---
+    // --- Phân loại & Trạng thái ---
     private ClassType type;      // REGULAR / MAKEUP
     private ClassStyle style;    // SESSION_BASED / PHASE_BASED
     private ClassStatus status;  // PENDING / OPENING / ACTIVE / CLOSED
@@ -31,18 +31,18 @@ public class ClassDTO {
     private Integer phases;         
     private Integer progress;       
 
-    // --- Thời gian & Địa điểm (Dữ liệu thô) ---
+    // --- Thời gian & Địa điểm ---
     private String defaultRoom;    
-    private String schedule;       // "T2, T4, T6"
-    private String time;           // "18:00 - 20:00"
-    private LocalDate date;        // Ngày cụ thể cho lớp MAKEUP
+    private String schedule;       
+    private String time;          
+    private LocalDate date;       
     private String note; 
 
-    // --- NHÂN SỰ (ClassStaff) ---
+    // --- NHÂN SỰ  ---
     private List<ClassStaffDTO> staffs; 
     private List<UserDTO> requestedTeachers; 
 
-    // --- HỌC SINH (ClassStudent) ---
+    // --- HỌC SINH ---
     private List<ClassStudentDTO> students; 
     private List<UserDTO> pendingStudents;
 

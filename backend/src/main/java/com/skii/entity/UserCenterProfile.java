@@ -34,18 +34,18 @@ public class UserCenterProfile {
     @Column(nullable = false)
     private String status; 
 
-    // --- 5. DỮ LIỆU ĐẶC THÙ CHO STUDENT (Học viên) ---
+    // DỮ LIỆU ĐẶC THÙ CHO STUDENT  ---
     private LocalDate enrolledDate;
-    private String currentLevel; // Thêm trường này để biết trình độ hiện tại của học sinh tại trung tâm
+    private String currentLevel; 
 
-    // --- 6. DỮ LIỆU ĐẶC THÙ CHO STAFF (Nhân viên/Giáo viên) ---
+    //  DỮ LIỆU ĐẶC THÙ CHO STAFF ---
     private LocalDate joinDate;
     private Double baseSalary;
 
-    // BỔ SUNG: Rating và Experience phục vụ chức năng Phân công (Mục 4)
-    private Double rating;      // Ví dụ: 4.5, 5.0 (để lọc giáo viên giỏi)
-    private String experience;  // Ví dụ: "3 năm kinh nghiệm", "IELTS 8.5"
-    private Integer totalClasses; // Số lớp đã từng dạy (để đo độ uy tín)
+    // BỔ SUNG: Rating và Experience 
+    private Double rating;      
+    private String experience;  
+    private Integer totalClasses; 
 
     @Column(length = 500)
     private String note;

@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface JoinRequestRepository extends JpaRepository<JoinRequest, Long> {
     
-    @EntityGraph(attributePaths = {"user"}) // Lấy luôn thông tin User để Mapper có dữ liệu
+    @EntityGraph(attributePaths = {"user"}) // Lấy thông tin User để Mapper có dữ liệu
     List<JoinRequest> findByCenterIdAndTypeAndStatus(Long centerId, RequestType type, RequestStatus status);
 }

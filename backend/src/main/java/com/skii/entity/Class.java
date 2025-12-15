@@ -87,7 +87,6 @@ private List<User> pendingStudents = new ArrayList<>();
 
     /**
      * QUẢN LÝ HỌC SINH CHÍNH THỨC
-     * Đổi tên từ 'enrollments' thành 'classStudents' để khớp với logic Service & Mapper
      */
     @OneToMany(mappedBy = "classs", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default

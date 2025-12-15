@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CenterRepository extends JpaRepository<Center, Long> {
-    // JpaRepository đã có sẵn hàm save() nên không cần viết thêm gì lúc này
 }

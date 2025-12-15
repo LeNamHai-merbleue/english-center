@@ -16,7 +16,7 @@ public class ClassSession {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id")
-    private Class classs; // Nối đến lớp để lấy thông tin: Tên lớp, giáo viên, màu sắc
+    private Class classs; // Nối đến lớp để lấy thông tin: Tên lớp, giáo viên, học sinh
 
     private LocalDate date; // Ngày học (Ví dụ: 2024-05-20)
     private LocalTime startTime; // Giờ bắt đầu

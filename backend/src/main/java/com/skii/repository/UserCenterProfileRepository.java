@@ -11,10 +11,8 @@ import java.util.List;
 @Repository
 public interface UserCenterProfileRepository extends JpaRepository<UserCenterProfile, Long> {
 
-    // =========================================================================
-    // PHẦN 1: TRUY VẤN DANH SÁCH (Dùng để hiển thị Table)
-    // =========================================================================
 
+    //  1: TRUY VẤN DANH SÁCH (Dùng để hiển thị Table)
     /**
      * Lấy danh sách NHÂN SỰ: Center khớp + Status Active + KHÔNG mang nhãn STUDENT
      */
@@ -51,10 +49,7 @@ public interface UserCenterProfileRepository extends JpaRepository<UserCenterPro
             @Param("search") String search, 
             @Param("hashtagIds") List<String> hashtagIds);
 
-    // =========================================================================
-    // PHẦN 2: CÁC HÀM ĐẾM TỔNG (Dùng cho Dashboard hoặc Phân trang)
-    // =========================================================================
-
+    // 2: CÁC HÀM ĐẾM TỔNG (Dùng cho Dashboard hoặc Phân trang)
     /**
      * Đếm tổng số NHÂN SỰ chính thức của trung tâm
      */

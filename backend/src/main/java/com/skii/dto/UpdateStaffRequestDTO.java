@@ -18,7 +18,6 @@ public class UpdateStaffRequestDTO {
     // Lương cơ bản tại trung tâm
     private Double baseSalary;
 
-    // Đánh giá năng lực nội bộ (0.0 - 5.0)
     private Double rating;
 
     // Ghi chú của quản lý về nhân sự này

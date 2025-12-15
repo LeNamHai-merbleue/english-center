@@ -24,12 +24,11 @@ public class ClassService {
 
     private final ClassRepository classRepository;
     private final UserRepository userRepository;
-    private final CenterRepository centerRepository; // Tiêm repo để gán Center nhanh
+    private final CenterRepository centerRepository;
     private final ClassMapper classMapper;
 
     /**
      * 1. LẤY DANH SÁCH LỚP
-     * Thay 'email' bằng 'centerId' trực tiếp
      */
     @Transactional(readOnly = true)
     public ClassListResponse getClassListForAdmin(Long centerId, String type, String viewGroup) {
@@ -162,9 +161,6 @@ public class ClassService {
 
     // --- HELPER METHODS ---
 
-    /**
-     * Hàm quan trọng: Vừa tìm lớp, vừa kiểm tra bảo mật trung tâm (Cross-center security check)
-     */
     private Class findAndValidateClass(Long classId, Long centerId) {
         Class theClass = classRepository.findById(classId)
                 .orElseThrow(() -> new RuntimeException("Lớp học không tồn tại"));

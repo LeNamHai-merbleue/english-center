@@ -20,14 +20,13 @@ public class AuthService {
     private final UserRepository userRepository;
     private final CenterRepository centerRepository;
     private final AdminRepository adminRepository;
-    private final HashtagRepository hashtagRepository; // 1. Tiêm thêm HashtagRepository
+    private final HashtagRepository hashtagRepository;
     private final JwtUtils jwtUtils;
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
 
     /**
      * ĐĂNG KÝ ADMIN & TRUNG TÂM
-     * Đã cập nhật: Tự động khởi tạo hashtag STUDENT cho trung tâm mới.
      */
     @Transactional
     public String registerAdminWithCenter(AdminRegisterDTO dto) {
@@ -43,10 +42,9 @@ public class AuthService {
         center = centerRepository.save(center);
 
         // 2. KHỞI TẠO HASHTAG STUDENT MẶC ĐỊNH
-        // Việc tạo này nằm trong @Transactional nên nếu lỗi ở dưới, hashtag cũng sẽ bị rollback
         initializeSystemHashtags(center);
 
-        // 3. Tạo User (Lưu ý: Phải mã hóa mật khẩu)
+        // 3. Tạo User mã hóa mật khẩu
         User user = User.builder()
                 .name(dto.getName())
                 .email(dto.getEmail())
@@ -56,7 +54,7 @@ public class AuthService {
                 .build();
         user = userRepository.save(user);
 
-        // 4. Tạo bản ghi bảng Admin (Bảng ghép)
+        // 4. Tạo bản ghi bảng Admin
         Admin admin = new Admin();
         admin.setUser(user);
         admin.setCenter(center);
@@ -70,7 +68,7 @@ public class AuthService {
      */
     private void initializeSystemHashtags(Center center) {
         Hashtag studentTag = Hashtag.builder()
-                .id("STUDENT_" + center.getId()) // ID duy nhất: STUDENT_1, STUDENT_2...
+                .id("STUDENT_" + center.getId())
                 .name("Học sinh")
                 .type("ROLE")
                 .isSystem(true) // Đánh dấu là nhãn hệ thống để bảo vệ (không cho xóa)

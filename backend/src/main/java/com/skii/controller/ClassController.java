@@ -21,9 +21,7 @@ public class ClassController {
 
     private final ClassService classService;
 
-    // ==========================================
-    // 1. NHÓM API TẠO LỚP (CREATE)
-    // ==========================================
+    // 1. NHÓM API TẠO LỚP
 
     @PostMapping("/create/regular-sessions")
     public ResponseEntity<ClassDTO> createRegularSessions(
@@ -41,7 +39,7 @@ public class ClassController {
                 .note(dto.getNote())
                 .build();
 
-        // user.getCenterId() lấy trực tiếp từ Token đã giải mã
+        // user.getCenterId() lấy trực tiếp từ Token 
         return ResponseEntity.ok(classService.createNewClass(user.getCenterId(), newClass));
     }
 
@@ -82,9 +80,8 @@ public class ClassController {
         return ResponseEntity.ok(classService.createNewClass(user.getCenterId(), newClass));
     }
 
-    // ==========================================
-    // 2. API DANH SÁCH & CHI TIẾT (READ)
-    // ==========================================
+
+    // 2. API DANH SÁCH & CHI TIẾT 
 
     @GetMapping("/list")
     public ResponseEntity<ClassListResponse> getClassList(
@@ -105,9 +102,7 @@ public class ClassController {
         return ResponseEntity.ok(classService.getClassDetail(id, user.getCenterId()));
     }
 
-    // ==========================================
-    // 3. API DUYỆT & THAO TÁC (UPDATE/ACTION)
-    // ==========================================
+    // 3. API DUYỆT & THAO TÁC 
 
     @PostMapping("/{id}/assign-staff")
     public ResponseEntity<ClassDTO> assignStaff(
@@ -116,7 +111,6 @@ public class ClassController {
             @RequestParam(required = false) List<Long> assistantIds,
             @AuthenticationPrincipal CustomUserDetails user) {
         
-        // Đảm bảo thao tác gán nhân sự diễn ra trong phạm vi trung tâm của Admin
         return ResponseEntity.ok(classService.assignStaffList(id, teacherId, assistantIds, user.getCenterId()));
     }
 

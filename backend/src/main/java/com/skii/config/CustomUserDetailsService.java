@@ -25,13 +25,12 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("Không tìm thấy người dùng với email: " + email));
 
         // 2. Tìm thông tin Admin dựa trên userId để lấy CenterId
-        // Đây chính là logic "lấy centerId từ bảng Admin" mà bạn đã nêu
         Long centerId = adminRepository.findByUserId(user.getId())
                 .map(admin -> admin.getCenter().getId())
                 .orElse(null); 
-                // Nếu centerId là null, người này có thể là User bình thường hoặc SuperAdmin
+                // Nếu centerId là null, người này có thể là User bình thường
 
-        // 3. Trả về đối tượng CustomUserDetails chứa đầy đủ thông tin (UserId, Email, Password, CenterId)
+        // 3. Trả về đối tượng CustomUserDetails
         return new CustomUserDetails(user, centerId);
     }
 }

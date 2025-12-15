@@ -24,9 +24,8 @@ public class StudentService {
     private final HashtagRepository hashtagRepository;
     private final StudentMapper studentMapper;
 
-    // =========================================================================
-    // PHẦN 1: QUẢN LÝ ĐƠN ĐĂNG KÝ HỌC (JOIN REQUESTS)
-    // =========================================================================
+
+    // 1: QUẢN LÝ ĐƠN ĐĂNG KÝ HỌC 
 
     @Transactional(readOnly = true)
     public List<StudentResponseDTO> getPendingCandidates(Long centerId) {
@@ -75,7 +74,7 @@ public class StudentService {
         profile.setUser(request.getUser());
         profile.setCenter(request.getCenter());
         profile.setStatus("ACTIVE");
-        profile.setEnrolledDate(LocalDate.now()); // Sử dụng trường học viên
+        profile.setEnrolledDate(LocalDate.now());
 
         if (hashtagIds != null && !hashtagIds.isEmpty()) {
             Set<Hashtag> selectedHashtags = hashtagRepository.findAllByIdInAndCenterId(hashtagIds, centerId);
@@ -98,18 +97,13 @@ public class StudentService {
     }
 
 
-    // =========================================================================
     // PHẦN 2: QUẢN LÝ HỌC VIÊN CHÍNH THỨC (PROFILES)
-    // =========================================================================
 
-    /**
-     * CẬP NHẬT: Sử dụng findStudentsByFilters để đảm bảo chỉ lấy đúng học viên
-     */
+
     @Transactional(readOnly = true)
     public List<StudentResponseDTO> getStudentList(Long centerId, String search, List<String> hashtagIds) {
         String studentTagId = "STUDENT_" + centerId;
         
-        // Gọi repository chuyên biệt cho học viên (có logic EXISTS studentTagId)
         List<UserCenterProfile> profiles = profileRepository.findStudentsByFilters(
                 centerId, studentTagId, search, hashtagIds);
                 
@@ -117,7 +111,7 @@ public class StudentService {
     }
 
     /**
-     * MỚI: Lấy tổng số lượng học viên chính thức
+     * Lấy tổng số lượng học viên chính thức
      */
     @Transactional(readOnly = true)
     public long getTotalStudentCount(Long centerId) {
@@ -156,9 +150,7 @@ public class StudentService {
         profileRepository.delete(profile);
     }
 
-    // =========================================================================
-    // PHẦN 3: HÀM BỔ TRỢ (HELPER METHODS)
-    // =========================================================================
+    // PHẦN 3: HÀM BỔ TRỢ 
 
     private UserCenterProfile findAndValidateProfile(Long profileId, Long centerId) {
         UserCenterProfile profile = profileRepository.findById(profileId)

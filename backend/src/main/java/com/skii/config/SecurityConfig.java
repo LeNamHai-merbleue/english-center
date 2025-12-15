@@ -24,8 +24,6 @@ import java.util.Arrays;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
-    // --- BỔ SUNG QUAN TRỌNG ĐỂ SỬA LỖI ---
     /**
      * Bean này cho phép AuthService gọi authenticationManager.authenticate()
      */

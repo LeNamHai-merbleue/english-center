@@ -8,7 +8,7 @@ import java.util.Optional;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Long> {
 
-    // Spring sẽ tự hiểu: Vào Admin -> Lấy User -> Lấy Id
+    // Vào Admin -> Lấy User -> Lấy Id
     Optional<Admin> findByUserId(Long userId);
 
     // Dùng để kiểm tra nhanh quyền admin của user tại center

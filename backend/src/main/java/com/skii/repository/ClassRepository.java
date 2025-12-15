@@ -19,8 +19,7 @@ public interface ClassRepository extends JpaRepository<Class, Long> {
     List<Class> findByCenterIdAndTypeAndStatusIn(Long centerId, Class.ClassType type, Collection<Class.ClassStatus> statuses);
 
     /**
-     * 2. BỘ LỌC THÔNG MINH (Smart Filter)
-     * Đã tối ưu để tìm kiếm trên cả tên lớp và tên giáo viên đang dạy.
+     * 2. BỘ LỌC
      */
     @Query("SELECT DISTINCT c FROM Class c " +
            "LEFT JOIN c.classStaffs cs " +
@@ -47,9 +46,8 @@ public interface ClassRepository extends JpaRepository<Class, Long> {
     );
 
     /**
-     * 3. TRUY VẤN CHI TIẾT ĐẦY ĐỦ (Fetch Join Toàn Diện)
+     * 3. TRUY VẤN CHI TIẾT ĐẦY ĐỦ
      * Dùng DISTINCT để tránh nhân bản dữ liệu khi JOIN FETCH nhiều tập hợp.
-     * Đã cập nhật join đúng applicantTeachers và pendingStudents từ Entity của bạn.
      */
     @Query("SELECT DISTINCT c FROM Class c " +
            "LEFT JOIN FETCH c.classStaffs cs " +
@@ -69,7 +67,6 @@ public interface ClassRepository extends JpaRepository<Class, Long> {
 
     /**
      * 5. KIỂM TRA GIÁO VIÊN CHÍNH
-     * Chú ý: "classs" là tên field trong ClassStaff của bạn.
      */
     @Query("SELECT COUNT(cs) > 0 FROM ClassStaff cs " +
            "WHERE cs.classs.id = :classId " +

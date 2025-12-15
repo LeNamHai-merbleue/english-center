@@ -13,7 +13,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*") // Hỗ trợ gọi API từ Frontend (React/Vue)
+@CrossOrigin(origins = "*")
 public class AuthController {
 
     private final AuthService authService;
@@ -31,7 +31,6 @@ public class AuthController {
     /**
      * ENDPOINT: ĐĂNG NHẬP CỔNG ADMIN
      * URL: POST http://localhost:8080/api/auth/admin/login
-     * Logic: Kiểm tra quyền quản trị và trả về workingCenterId.
      */
     @PostMapping("/admin/login")
     public ResponseEntity<LoginResponse> adminLogin(@RequestBody LoginRequest request) {

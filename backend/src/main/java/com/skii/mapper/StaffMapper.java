@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 public class StaffMapper {
 
     /**
-     * CHỨC NĂNG MỚI: Chuyển đổi từ JoinRequest (Đơn ứng tuyển) sang StaffResponseDTO.
-     * Dùng để hiển thị danh sách ứng viên (User 6, 7, 8) lên giao diện Admin.
+     * CHỨC NĂNG: Chuyển đổi từ JoinRequest sang StaffResponseDTO.
+     * Dùng để hiển thị danh sách ứng viên
      */
     public StaffResponseDTO toResponseFromJoinRequest(JoinRequest request) {
         if (request == null) {
@@ -24,13 +24,13 @@ public class StaffMapper {
         User user = request.getUser();
 
         return StaffResponseDTO.builder()
-                .profileId(request.getId()) // Lưu ý: FE sẽ dùng ID này để gọi Approve/Reject
+                .profileId(request.getId()) 
                 .userId(user != null ? user.getId() : null)
                 .name(user != null ? user.getName() : "N/A")
                 .email(user != null ? user.getEmail() : "N/A")
                 .phone(user != null ? user.getPhone() : "N/A")
                 .avatar(user != null ? user.getAvatar() : null)
-                .status("PENDING") // Luôn là PENDING vì lấy từ bảng JoinRequest
+                .status("PENDING") // Luôn là PENDING 
                 .joinDate(null)    // Chưa có ngày gia nhập chính thức
                 .note(request.getMessage()) // Lấy "Lời nhắn" của User hiển thị tạm vào trường note
                 .hashtag(GroupedHashtagResponseDTO.builder()
@@ -42,7 +42,6 @@ public class StaffMapper {
 
     /**
      * Chuyển đổi từ thực thể UserCenterProfile sang StaffResponseDTO.
-     * Phục vụ cho nhân viên chính thức (User 4, 5).
      */
     public StaffResponseDTO toResponseDTO(UserCenterProfile profile) {
         if (profile == null) return null;

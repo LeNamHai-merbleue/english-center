@@ -7,8 +7,8 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class StaffResponseDTO {
-    private Long profileId; // ID của UserCenterProfile
-    private Long userId;    // ID của User gốc
+    private Long profileId; 
+    private Long userId;   
     private String name;
     private String email;
     private String phone;

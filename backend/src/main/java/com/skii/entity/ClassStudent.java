@@ -28,7 +28,7 @@ public class ClassStudent {
     @Enumerated(EnumType.STRING)
     private EnrollmentStatus status; // ACTIVE, DROPPED, RESERVED (Bảo lưu)
 
-    private Double midtermScore; // Điểm giữa kỳ (ví dụ)
+    private Double midtermScore; // Điểm giữa kỳ 
     private Double finalScore;   // Điểm cuối kỳ
     
     @Column(columnDefinition = "TEXT")

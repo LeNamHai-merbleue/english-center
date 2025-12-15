@@ -11,15 +11,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
-    // Thông tin cơ bản (Từ bảng users)
+    // Thông tin cơ bản 
     private Long id;
     private String name;
     private String avatar;
-    private String email; // Bổ sung để liên lạc
-    private String phone; // Bổ sung để liên lạc
-    private String role;  // Nên lưu dạng: "MAIN_TEACHER", "ASSISTANT", "STUDENT"
-
-    // Thông tin chuyên môn (Từ bảng user_center_profiles)
+    private String email; 
+    private String phone; 
+    private String role;  
+    // Thông tin chuyên môn 
     private Double rating;      
     private String experience;  
     private String currentLevel; 

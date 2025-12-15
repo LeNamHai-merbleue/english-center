@@ -27,9 +27,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByEmail(String email);
 
     /**
-     * CHỨC NĂNG 4: TÌM NHÂN SỰ THEO HASHTAG VÀ TRUNG TÂM
+     * TÌM NHÂN SỰ THEO HASHTAG VÀ TRUNG TÂM
      * Lấy danh sách giáo viên hoặc trợ giảng thuộc một trung tâm cụ thể 
-     * dựa trên Hashtag role (e.g., 'teacher' hoặc 'assistant')
      */
     @Query("SELECT DISTINCT u FROM User u " +
            "JOIN u.profiles p " +
@@ -43,7 +42,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     );
 
     /**
-     * TÌM KIẾM THÔNG MINH (Smart Search) cho nhân sự
+     * TÌM KIẾM cho nhân sự
      * Tìm theo tên hoặc email của giáo viên trong một trung tâm
      */
     @Query("SELECT u FROM User u " +
@@ -54,8 +53,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> searchUsersInCenter(@Param("centerId") Long centerId, @Param("query") String query);
 
     /**
-     * CHỨC NĂNG 5: LẤY CHI TIẾT USER KÈM PROFILE VÀ HASHTAG
-     * Tránh lỗi LazyLoading khi Mapper cần dữ liệu Rating/Exp
+     * LẤY CHI TIẾT USER KÈM PROFILE VÀ HASHTAG
      */
     @Query("SELECT u FROM User u " +
            "LEFT JOIN FETCH u.profiles p " +

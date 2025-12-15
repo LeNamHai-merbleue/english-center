@@ -19,7 +19,6 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtUtils jwtUtils;
-    // Thêm UserDetailsService để load đầy đủ thông tin CustomUserDetails
     private final CustomUserDetailsService userDetailsService; 
 
     @Override
@@ -31,15 +30,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 String email = jwtUtils.getEmailFromJwtToken(jwt);
 
-                // THAY ĐỔI QUAN TRỌNG: Load đầy đủ CustomUserDetails thay vì chỉ dùng email
-                // Điều này giúp centerId "đi theo" request vào tận Controller/Service
                 CustomUserDetails userDetails = (CustomUserDetails) userDetailsService.loadUserByUsername(email);
 
                 UsernamePasswordAuthenticationToken authentication = 
                     new UsernamePasswordAuthenticationToken(
-                        userDetails, // Truyền userDetails thay vì email
+                        userDetails,
                         null, 
-                        userDetails.getAuthorities() // Lấy đúng quyền (ADMIN/USER)
+                        userDetails.getAuthorities() 
                     );
                 
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

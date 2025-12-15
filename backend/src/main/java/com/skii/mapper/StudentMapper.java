@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 public class StudentMapper {
 
     /**
-     * Chuyển đổi từ JoinRequest (Đơn đăng ký học) sang StudentResponseDTO.
-     * Dùng để hiển thị danh sách ứng viên học viên lên giao diện Admin.
+     * Chuyển đổi từ JoinRequest sang StudentResponseDTO.
+     * Dùng để hiển thị danh sách ứng viên học viên
      */
     public StudentResponseDTO toResponseFromJoinRequest(JoinRequest request) {
         if (request == null) {
