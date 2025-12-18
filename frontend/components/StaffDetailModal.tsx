@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { X, Mail, Phone, Calendar, Star, Briefcase, FileText, DollarSign, Award, Cake, Edit2, Save } from 'lucide-react';
 import { getStaffDetail, updateStaff } from '../api/staffApi'; 
 
-// --- Interface giữ nguyên ---
+// --- Interface  ---
 interface HashtagDTO {
   id: string;
   name: string;
@@ -44,12 +44,10 @@ export function StaffDetailModal({ profileId, onClose, onSaveSuccess, availableH
   const [member, setMember] = useState<StaffMember | null>(null);
   const [editedMember, setEditedMember] = useState<StaffMember | null>(null);
 
-  // 1. Sửa hàm fetchDetail để nhận dữ liệu trực tiếp
   useEffect(() => {
     const fetchDetail = async () => {
       try {
         setLoading(true);
-        // Vì axiosClient trả về response.data, nên data ở đây là Object StaffMember
         const data = await getStaffDetail(profileId) as unknown as StaffMember;
         
         if (data) {

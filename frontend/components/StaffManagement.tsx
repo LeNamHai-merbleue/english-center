@@ -40,7 +40,7 @@ interface CandidateDetailResponseDTO {
   suggestedTraits: HashtagDTO[];
 }
 
-// Interface này bao quát cả nhân viên và ứng viên
+// Interface
 interface StaffMember {
   profileId: number; 
   userId: number;
@@ -55,12 +55,11 @@ interface StaffMember {
     traits: Hashtag[];
   };
   joinDate: string;
-  experience: string; // Đây là trường quan trọng của ứng viên
+  experience: string; 
   rating: number;
   totalClasses: number;
-  note: string; // Ở ứng viên, đây là "Lời nhắn" (Message)
+  note: string; 
   baseSalary: number;
-  // Bổ sung thêm các trường nếu Backend có trả về cho JoinRequest
   education?: string;
   skills?: string[];
 }
@@ -94,7 +93,7 @@ export function StaffManagement() {
             setReviewingRequest(requestId);
             setReviewForm({ hashtags: [] });
 
-            // 3. QUAN TRỌNG: Chỉ đóng danh sách ứng viên KHI ĐÃ CÓ dữ liệu chi tiết
+            // 3. Chỉ đóng danh sách ứng viên KHI ĐÃ CÓ dữ liệu chi tiết
             setShowJoinRequestsList(false); 
         }
     } catch (error) {
