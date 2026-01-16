@@ -44,10 +44,10 @@ interface Teacher {
   name: string;
   avatar: string;
   department: string;
-  position: string; // Vị trí: "Giáo viên", "Tutor", "Trợ giảng", etc.
-  baseSalary: number; // Lương cứng hàng tháng
-  workDays: number; // Số ngày làm việc
-  absentDays: number; // Số ngày nghỉ
+  position: string; 
+  baseSalary: number; 
+  workDays: number; 
+  absentDays: number; 
   isPaid: boolean;
 }
 

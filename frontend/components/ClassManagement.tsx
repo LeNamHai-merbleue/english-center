@@ -84,7 +84,6 @@ export function ClassManagement() {
 
   const handleUpdateClassStatus = async (classId: number, staffId?: number, targetStatus?: string) => {
     try {
-      // Ở đây bạn sẽ gọi các hàm API như confirmStaff hoặc activateClass tùy theo targetStatus
       console.log(`Cập nhật lớp ${classId} sang ${targetStatus} với staff ${staffId}`);
       setShowDetailModal(false);
       setSelectedClass(null);
@@ -255,7 +254,7 @@ const handleOpenDetail = async (classId: number) => {
         )}
       </div>
 
-      {/* MODAL THÊM LỚP HỌC (ĐÃ PHỤC HỒI CHI TIẾT) */}
+      {/* MODAL THÊM LỚP HỌC */}
       {showAddModal && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
           <div className="fixed inset-0 bg-black/40 backdrop-blur-md" onClick={() => setShowAddModal(false)} />

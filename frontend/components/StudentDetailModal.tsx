@@ -18,10 +18,10 @@ interface StudentMember {
   avatar: string;
   birthday: string;
   status: string;
-  enrolledDate: string; // Ngày nhập học
-  experience: string;   // Học vấn/Trình độ cũ
+  enrolledDate: string; 
+  experience: string;   
   totalClasses: number;
-  currentLevel: string; // Trình độ hiện tại
+  currentLevel: string; 
   note: string;
   hashtag: {
     roles: HashtagDTO[];

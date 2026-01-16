@@ -91,7 +91,7 @@ export function StudentManagement() {
         setStudents(studentData);
         setJoinRequests((candidateRes as any) || []);
 
-        // Gom hashtag để lọc (Chỉ lấy hashtag từ danh sách student thực tế)
+        // Gom hashtag để lọc
         const allUniqueTags: Hashtag[] = [];
         const seenIds = new Set();
         studentData.forEach((s: StudentMember) => {
@@ -116,7 +116,7 @@ export function StudentManagement() {
     loadData();
   }, [searchQuery]);
 
-  // --- LOGIC XỬ LÝ ĐƠN ĐĂNG KÝ (CANDIDATES) ---
+  // --- LOGIC XỬ LÝ ĐƠN ĐĂNG KÝ ---
 const handleOpenReview = async (requestId: number) => {
     try {
         const data = await getStudentCandidateDetail(requestId) as unknown as StudentCandidateDetailDTO;
@@ -179,7 +179,7 @@ const handleOpenReview = async (requestId: number) => {
     }
   };
 
-  // --- LOGIC LỌC (FILTER) ---
+  // --- LOGIC LỌC  ---
   const filteredStudents = (students || []).filter(s => {
     const matchesSearch = !searchQuery || 
         s.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
