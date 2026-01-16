@@ -1,6 +1,6 @@
 package com.skii.config;
 
-import com.skii.config.CustomUserDetails;
+import com.skii.config.CustomUserDetails; // Import class này
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
@@ -25,6 +25,10 @@ public class JwtUtils {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
+    /**
+     * CẬP NHẬT: Phương thức nhận CustomUserDetails
+     * Giúp đưa cả email, isAdmin và workingCenterId vào Token
+     */
     public String generateToken(CustomUserDetails userDetails) {
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
@@ -38,6 +42,16 @@ public class JwtUtils {
                 .compact();
     }
 
+    // Giữ lại hàm cũ nếu bạn vẫn cần dùng ở chỗ khác, hoặc xóa đi nếu chỉ dùng cái mới
+    public String generateToken(String email, boolean isAdmin) {
+        return Jwts.builder()
+                .setSubject(email)
+                .claim("isAdmin", isAdmin)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
 
     public String getEmailFromJwtToken(String token) {
         return Jwts.parserBuilder()
@@ -48,6 +62,10 @@ public class JwtUtils {
                 .getSubject();
     }
 
+    /**
+     * BỔ SUNG: Hàm lấy centerId từ Token
+     * Dùng trong JwtAuthenticationFilter để set vào context mà không gọi DB
+     */
     public Long getCenterIdFromJwtToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
